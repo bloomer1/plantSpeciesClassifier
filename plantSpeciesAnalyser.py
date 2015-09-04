@@ -19,6 +19,8 @@ def flower_type(num):
 		return 'Virginica'
 
 
+
+
 iris = load_iris()
 X = iris.data 
 Y = iris.target
@@ -33,7 +35,8 @@ iris_target = DataFrame(Y,columns=['Species'])
 
 # Central tendency and dispersion calculation
 print 'Mean'
-print np.mean(iris_data['Sepal Length'])
+m = np.mean(iris_data['Sepal Length'])
+print m
 #print iris_data['Sepal Length'].mean()
 
 print 'Median'
@@ -77,6 +80,17 @@ sorted_pl_data = sorted(pl_data)
 #bin_mean = stats.binned_statistic(pl_data, np.arange(1), statistic='mean', bins=7)
 #print bin_mean
 
+# zscore normalization for petal length
+# standard deviation taken from description of the data
+def zScoreNorm(num):
+
+	return ((num - m)/1.76)
+
+iris_data_c = iris_data
+iris_data_c['Petal Length'] = iris_data_c['Petal Length'].apply(zScoreNorm)
+norm_zscore_data = iris_data_c['Petal Length']
+print "norm_data"
+print norm_zscore_data
 
 print iris_data
 print iris_target
