@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns 
 from sklearn import linear_model
 from sklearn.datasets import load_iris
+from scipy import stats
 
 sns.set_style('whitegrid')
 
@@ -58,16 +59,23 @@ print iris_data['Sepal Length'].quantile(1.0)
 # this is equal width binning
 pl_data = iris_data['Petal Length']
 
+print pl_data
+
 #plt.hist(data,bins=np.range(min(data),max(data) + binwidth,binwidth))
 plt.hist(pl_data,bins=np.arange(1.0,6.9 + 0.59,0.59))
 plt.show()
 
+# this is binning by equal width
 #plt.hist(pl_data, bins=[0, 10, 20, 30, 40, 50, 100])
-plt.hist(pl_data, bins=[1, 2, 3, 4, 5, 6, 7])
-plt.show()
+
+sorted_pl_data = sorted(pl_data)
+#plt.hist(pl_data, bins=[1, 2, 3, 4, 5, 6, 7])
+#plt.show()
 
 
-
+#using smoothing by bin means applied on equal depth partitioning
+#bin_mean = stats.binned_statistic(pl_data, np.arange(1), statistic='mean', bins=7)
+#print bin_mean
 
 
 print iris_data
