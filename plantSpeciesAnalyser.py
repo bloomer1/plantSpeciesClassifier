@@ -63,6 +63,8 @@ plt.hist(pl_data,bins=np.arange(1.0,6.9 + 0.59,0.59))
 plt.show()
 
 #plt.hist(pl_data, bins=[0, 10, 20, 30, 40, 50, 100])
+plt.hist(pl_data, bins=[1, 2, 3, 4, 5, 6, 7])
+plt.show()
 
 
 
